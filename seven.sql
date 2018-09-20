@@ -1,0 +1,1 @@
+SELECT DISTINCT yc.club, yc.desc FROM yrb_club yc, (SELECT  DISTINCT yo.title, yo.year, yo.price, yo.club FROM yrb_purchase yp, yrb_offer yo,(SELECT yo.title,yo.year, max(yo.price) as pricer FROM yrb_offer yo GROUP BY yo.title, yo.year) joint WHERE yo.price = joint.pricer AND yo.year = joint.year AND yo.title = joint.title) joint2 WHERE yc.club = joint2.club
